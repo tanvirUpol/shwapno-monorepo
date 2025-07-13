@@ -7,6 +7,9 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  // bassepath
+  basePath: "/docs"
+
 };
 
 export default nextConfig;
