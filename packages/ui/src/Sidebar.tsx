@@ -7,6 +7,7 @@ import { webSidebar } from '../../../apps/web//utils/sidebarConfig';
 import { docsSidebar } from '../../../apps/docs/utils/sidebarConfig';
 
 
+//relatve path format
 const sidebarItems = [webSidebar, docsSidebar];
 
 type SidebarSubItem = {
