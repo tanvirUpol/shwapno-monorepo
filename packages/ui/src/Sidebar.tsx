@@ -3,12 +3,22 @@
 import React, { useState } from 'react';
 import SmartLink from './components/SmartLink';
 import MobileSidebar from './components/MobileSidebar';
-import { webSidebar } from '../../../apps/web//utils/sidebarConfig';
-import { docsSidebar } from '../../../apps/docs/utils/sidebarConfig';
 
+function WebIcon() {
+  return (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+    </svg>
+  );
+}
 
-//relatve path format
-const sidebarItems = [webSidebar, docsSidebar];
+function DocsIcon() {
+  return (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5h6m2 14H7a2 2 0 01-2-2V7a2 2 0 012-2h2l2-2h2l2 2h2a2 2 0 012 2v10a2 2 0 01-2 2z" />
+    </svg>
+  );
+}
 
 type SidebarSubItem = {
   title: string;
@@ -16,6 +26,26 @@ type SidebarSubItem = {
   group: string;
   icon?: React.ReactNode;
 };
+
+
+const sidebarItems = [{
+  title: 'Web',
+  icon: <WebIcon />,
+  items: [
+    { title: 'Blog', group: 'Main', path: 'http://localhost:3001/blog' },
+    { title: 'Add Blog', group: 'Main', path: 'http://localhost:3001/addBlog' },
+    { title: 'Contact', group: 'Communication', path: 'http://localhost:3001/contact' },
+  ],
+},
+{
+  title: 'Docs',
+  icon: <DocsIcon />,
+  items: [
+    { title: 'Getting Started', group: 'Document', path: 'http://localhost:3002/docs' },
+    { title: 'Learn More', group: 'Document', path: 'http://localhost:3002/files' },
+  ],
+}
+];
 
 export function Sidebar({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
